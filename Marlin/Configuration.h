@@ -979,12 +979,14 @@
 //#define FOAMCUTTER_XYUV
 
 // @section polargraph
+// X_BED_SIZE 2530
+// Y_BED_SIZE 1870
 
 // Enable for Polargraph Kinematics
 #define POLARGRAPH
 #if ENABLED(POLARGRAPH)
-  #define POLARGRAPH_MAX_BELT_LEN  3240.06844371096 // (mm) Belt length at full extension. Override with M665 H.
-  #define DEFAULT_SEGMENTS_PER_SECOND 5   // Move segmentation based on duration
+  #define POLARGRAPH_MAX_BELT_LEN 3000 // (mm) Belt length at full extension. Override with M665 H.
+  #define DEFAULT_SEGMENTS_PER_SECOND 100   // Move segmentation based on duration
   #define PEN_UP_DOWN_MENU                // Add "Pen Up" and "Pen Down" to the MarlinUI menu
 #endif
 
@@ -1293,7 +1295,7 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 // 24.46
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 5*1.745*0.6564910553, 5*1.745*0.6564910553 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 5.62770194986, 5.62770194986 }
 
 /**
  * Enable support for M92. Disable to save at least ~530 bytes of flash.
@@ -1882,8 +1884,8 @@
 // @section geometry
 
 // The size of the printable area
-#define X_BED_SIZE 2438.4
-#define Y_BED_SIZE 2133.6
+#define X_BED_SIZE 2530
+#define Y_BED_SIZE 1870
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -2323,8 +2325,8 @@
 
 // Manually set the home position. Leave these undefined for automatic settings.
 // For DELTA this is the top-center of the Cartesian print volume.
-#define MANUAL_X_HOME_POS 1219.2
-#define MANUAL_Y_HOME_POS -914.4
+#define MANUAL_X_HOME_POS X_BED_SIZE/2
+#define MANUAL_Y_HOME_POS -870
 //#define MANUAL_Z_HOME_POS 0
 //#define MANUAL_I_HOME_POS 0
 //#define MANUAL_J_HOME_POS 0
@@ -2430,7 +2432,7 @@
  *   M501 - Read settings from EEPROM. (i.e., Throw away unsaved changes)
  *   M502 - Revert settings to "factory" defaults. (Follow with M500 to init the EEPROM.)
  */
-//#define EEPROM_SETTINGS     // Persistent storage with M500 and M501
+#define EEPROM_SETTINGS     // Persistent storage with M500 and M501
 //#define DISABLE_M503        // Saves ~2700 bytes of flash. Disable for release!
 #define EEPROM_CHITCHAT       // Give feedback on EEPROM commands. Disable to save flash.
 #define EEPROM_BOOT_SILENT    // Keep M503 quiet and only give errors during first load
