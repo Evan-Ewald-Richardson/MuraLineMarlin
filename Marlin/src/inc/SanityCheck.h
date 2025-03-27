@@ -3811,7 +3811,17 @@ static_assert(_PLUS_TEST(3), "DEFAULT_MAX_ACCELERATION values must be positive."
     #error "POWER_LOSS_RECOVER_ZHOME is not needed on a machine that homes to ZMAX."
   #elif ALL(IS_CARTESIAN, POWER_LOSS_RECOVER_ZHOME) && Z_HOME_TO_MIN && !defined(POWER_LOSS_ZHOME_POS)
     #error "POWER_LOSS_RECOVER_ZHOME requires POWER_LOSS_ZHOME_POS for a Cartesian that homes to ZMIN."
-  #endif
+#endif
+
+/**
+ * Servo-based stepper requirements
+ */
+#if HAS_SERVOSTEPPER && NUM_SERVOS < 1
+  #error "SERVOSTEPPER requires NUM_SERVOS > 0."
+#endif
+
+#if ENABLED(POWER_LOSS_RECOVERY) && DISABLED(ULTIPANEL)
+  #error "POWER_LOSS_RECOVERY currently requires an LCD Controller."
 #endif
 
 #if ENABLED(Z_STEPPER_AUTO_ALIGN)
