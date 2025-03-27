@@ -1228,7 +1228,7 @@
 
 // @section motion
 
-#define AXIS_RELATIVE_MODES { false, false }
+#define AXIS_RELATIVE_MODES { false, false, false }
 
 // Add a Duplicate option for well-separated conjoined nozzles
 //#define MULTI_NOZZLE_DUPLICATION
@@ -1477,7 +1477,7 @@
 // @section lcd
 
 #if HAS_MANUAL_MOVE_MENU
-  #define MANUAL_FEEDRATE { 50*60, 50*60 } // (mm/min) Feedrates for manual moves along X, Y, Z, E from panel
+  #define MANUAL_FEEDRATE { 50*60, 50*60, 50*60 } // (mm/min) Feedrates for manual moves along X, Y, Z, E from panel
   #define FINE_MANUAL_MOVE 0.025    // (mm) Smallest manual move (< 0.1mm) applying to Z on most machines
   #if IS_ULTIPANEL
     #define MANUAL_E_MOVES_RELATIVE // Display extruder move distance rather than "position"
@@ -4399,9 +4399,10 @@
  * Axes that use the 'SERVOSTEPPER' driver type are redirected to a servo
  */
 #if HAS_SERVOSTEPPER
-  #define SERVO_X_INDEX 0
-  #define SERVO_Y_INDEX 1
-  #define SERVO_Z_INDEX 2
+#define SERVO_E0_INDEX 0
+#define SERVO_X_INDEX 1
+#define SERVO_Y_INDEX 2
+#define SERVO_Z_INDEX 3
 #endif
 
 /**
